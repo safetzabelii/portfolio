@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safet Zabeli Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .fade-in {
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .window-border {
+      border: 1px solid #0a246a;
+      border-top: 1px solid #4b6fd1;
+      border-left: 1px solid #4b6fd1;
+    }
+    .title-bar {
+      background: linear-gradient(to bottom, #0a246a, #0a246a);
+      border-bottom: 1px solid #4b6fd1;
+    }
+    /* Window Transitions */
+    #portfolioWindow {
+      transition: all 0.3s ease-in-out;
+      position: fixed;
+    }
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      #portfolioWindow {
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 95% !important;
+        height: 85vh !important;
+        max-height: 85vh;
+        margin: 0;
+      }
+      #portfolioContent {
+        padding: 1rem;
+        max-height: calc(85vh - 50px);
+        overflow-y: auto;
+      }
+      .desktop-icons {
+        display: none;
+      }
+      .mobile-nav {
+        display: flex;
+      }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      #portfolioWindow {
+        top: 50% !important;
+        left: calc(50% + 40px) !important;
+        transform: translate(-50%, -50%) !important;
+        width: 70% !important;
+        height: 80vh !important;
+        max-width: calc(100vw - 150px);
+        right: 20px;
+      }
+      .mobile-nav {
+        display: none;
+      }
+      #portfolioContent {
+        max-height: calc(80vh - 50px);
+        overflow-y: auto;
+      }
+    }
+    @media (min-width: 1025px) {
+      #portfolioWindow {
+        top: 50% !important;
+        left: calc(50% + 60px) !important;
+        transform: translate(-50%, -50%) !important;
+        width: 85% !important;
+        height: 90vh !important;
+        max-width: calc(100vw - 180px);
+      }
+      .mobile-nav {
+        display: none;
+      }
+    }
+    /* Mobile Navigation */
+    .mobile-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #0a246a;
+      border-top: 1px solid #4b6fd1;
+      padding: 12px 8px;
+      z-index: 100;
+    }
+    .mobile-nav-items {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .mobile-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+      text-decoration: none;
+      font-size: 0.75rem;
+      min-width: 60px;
+    }
+    .mobile-nav-item img {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 6px;
+      transition: transform 0.2s ease;
+    }
+    .mobile-nav-item:hover img {
+      transform: scale(1.1);
+    }
+    .mobile-nav-item span {
+      white-space: nowrap;
+    }
+    /* Keep image size consistent */
+    .profile-image-container {
+      min-width: 192px;
+      min-height: 192px;
+    }
+    .profile-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body class="bg-[#0a246a] min-h-screen text-white relative overflow-hidden">
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav">
+    <div class="mobile-nav-items">
+      <a href="#" onclick="toggleApp(event)" class="mobile-nav-item">
+        <img src="https://img.icons8.com/fluency/48/opened-folder.png" alt="Portfolio" />
+        <span>Portfolio</span>
+      </a>
+      <a href="mailto:safetzabeli34@gmail.com" class="mobile-nav-item">
+        <img src="https://img.icons8.com/fluency/48/filled-message.png" alt="Email" />
+        <span>Email</span>
+      </a>
+      <a href="https://github.com/safetzabelii" target="_blank" class="mobile-nav-item">
+        <img src="https://img.icons8.com/fluency/48/github.png" alt="GitHub" />
+        <span>GitHub</span>
+      </a>
+      <a href="https://linkedin.com/in/safet-zabeli-46b936178" target="_blank" class="mobile-nav-item">
+        <img src="https://img.icons8.com/fluency/48/linkedin.png" alt="LinkedIn" />
+        <span>LinkedIn</span>
+      </a>
+      <a href="assets/Safet_Zabeli_CV.pdf" target="_blank" class="mobile-nav-item">
+        <img src="https://img.icons8.com/fluency/48/resume.png" alt="Resume" />
+        <span>Resume</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Background -->
+  <main class="bg-[url('https://wallpapercave.com/wp/wp2744899.jpg')] bg-cover bg-center min-h-screen p-6">
+
+    <!-- Desktop Icons -->
+    <div class="desktop-icons absolute top-6 left-6 flex flex-col items-center gap-6 fade-in hidden md:flex">
+      <div class="text-center text-xs">
+        <a href="#" onclick="toggleApp(event)">
+          <img src="https://img.icons8.com/fluency/48/opened-folder.png" class="mx-auto hover:scale-110 transition-transform" />
+          <span>Portfolio</span>
+        </a>
+      </div>
+      <div class="text-center text-xs">
+        <a href="mailto:safetzabeli34@gmail.com">
+          <img src="https://img.icons8.com/fluency/48/filled-message.png" class="mx-auto hover:scale-105 transition-transform" />
+          <span>Email</span>
+        </a>
+      </div>
+      <div class="text-center text-xs">
+        <a href="https://github.com/safetzabelii" target="_blank">
+          <img src="https://img.icons8.com/fluency/48/github.png" class="mx-auto hover:scale-105 transition-transform" />
+          <span>GitHub</span>
+        </a>
+      </div>
+      <div class="text-center text-xs">
+        <a href="https://linkedin.com/in/safet-zabeli-46b936178" target="_blank">
+          <img src="https://img.icons8.com/fluency/48/linkedin.png" class="mx-auto hover:scale-105 transition-transform" />
+          <span>LinkedIn</span>
+        </a>
+      </div>
+      <div class="text-center text-xs">
+        <a href="assets/Safet_Zabeli_CV.pdf" target="_blank">
+          <img src="https://img.icons8.com/fluency/48/resume.png" class="mx-auto hover:scale-105 transition-transform" />
+          <span>Resume</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Portfolio App Window -->
+    <div id="portfolioWindow"
+         class="absolute top-[100px] left-[100px] bg-[#ece9d8] text-black rounded-none shadow-2xl w-0 h-0 opacity-0 overflow-hidden transition-all duration-700 ease-in-out fade-in window-border"
+         style="z-index: 10;">
+
+      <!-- Title Bar -->
+      <div class="title-bar text-white font-semibold px-4 py-2 cursor-pointer text-lg flex justify-between items-center">
+        <span>📁 Safet's Portfolio</span>
+        <button onclick="toggleApp()" class="text-white text-sm bg-[#0a246a] px-2 rounded-none hover:bg-[#4b6fd1]">X</button>
+      </div>
+
+      <!-- Content -->
+      <div id="portfolioContent" class="p-8 text-base md:text-lg leading-relaxed space-y-12 max-h-[calc(100vh-150px)] overflow-y-auto text-gray-800">
+
+        <section class="bg-white p-6 rounded-none shadow window-border">
+          <div class="flex flex-col md:flex-row items-center gap-6">
+            <div class="w-48 h-48 overflow-hidden window-border profile-image-container">
+              <img src="assets/Img_2025_04_05_22_46_06.jpeg" alt="Safet Zabeli" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h1 class="text-3xl font-bold text-[#0a246a] mb-3">Hi, I'm Safet Zabeli</h1>
+              <p class="text-gray-700">
+                I'm a passionate <span class="font-semibold text-[#0a246a]">Computer Science & Engineering graduate</span> from UBT Prishtina. I enjoy building interactive, scalable, and purposeful web applications using modern technologies.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="bg-white p-6 rounded-none shadow window-border">
+          <h2 class="text-2xl font-semibold text-[#0a246a] mb-3">What Do I Do?</h2>
+          <ul class="list-disc pl-5 space-y-2 text-gray-700">
+            <li>Develop responsive full-stack web apps</li>
+            <li>Design intuitive user interfaces with a focus on usability</li>
+            <li>Implement real-time functionality using modern JS frameworks</li>
+            <li>Write clean, maintainable, and well-documented code</li>
+          </ul>
+        </section>
+
+        <section class="bg-white p-6 rounded-none shadow window-border">
+          <h2 class="text-2xl font-semibold text-[#0a246a] mb-3">More About Me</h2>
+          <p class="text-gray-700">
+            I'm always curious and love learning. Outside of coding, I enjoy photography, exploring new places, and participating in exchange programs and local tech events. I thrive in collaborative environments and bring a proactive attitude to every project I join.
+          </p>
+        </section>
+
+        <section class="bg-white p-6 rounded-none shadow window-border">
+          <h2 class="text-2xl font-semibold text-[#0a246a] mb-3">My Skillset</h2>
+          <ul class="grid grid-cols-2 md:grid-cols-3 gap-3 text-gray-700">
+            <li>HTML5, CSS3, SCSS, BEM</li>
+            <li>JavaScript, TypeScript, PHP</li>
+            <li>React (Hooks), Node.js, .NET</li>
+            <li>MongoDB, MySQL, MS SQL</li>
+            <li>Tailwind, Bootstrap, Material UI</li>
+            <li>C, C++, C#, Git, Firebase, Trello</li>
+          </ul>
+        </section>
+
+        <section class="bg-white p-6 rounded-none shadow window-border">
+          <h2 class="text-2xl font-semibold text-[#0a246a] mb-3">Featured Projects</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-4 rounded-none border border-gray-200 shadow-sm hover:shadow-md transition-all window-border">
+              <h3 class="text-xl font-bold text-[#0a246a] mb-2">Food Delivery System</h3>
+              <p class="mb-2 text-gray-700">
+                A .NET + React system with Google Maps integration for live delivery tracking, restaurant/menu management, and microservices with RabbitMQ.
+              </p>
+              <a href="https://github.com/ArlindFeta53449/Lab-2-Food-Delivery" target="_blank" class="text-[#0a246a] underline">Backend</a> |
+              <a href="https://github.com/safetzabelii/frontend-lab2" target="_blank" class="text-[#0a246a] underline">Frontend</a>
+            </div>
+
+            <div class="bg-white p-4 rounded-none border border-gray-200 shadow-sm hover:shadow-md transition-all window-border">
+              <h3 class="text-xl font-bold text-[#0a246a] mb-2">Thesis Online System</h3>
+              <p class="mb-2 text-gray-700">
+                Web application for managing thesis submissions and approvals. Includes admin-side validation and real-time updates, built with React + .NET.
+              </p>
+              <a href="https://github.com/safetzabelii/DiplomaThesisDigii" target="_blank" class="text-[#0a246a] underline">Project Link</a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Taskbar -->
+  <footer class="bg-[#0a246a] border-t border-[#4b6fd1] text-white px-4 py-2 flex justify-between items-center text-sm fade-in hidden md:flex">
+    <div class="flex gap-4 items-center">
+      <button class="bg-[#0a246a] px-3 py-1 rounded-none shadow text-xs hover:bg-[#4b6fd1]">Start</button>
+      <span class="opacity-75">Portfolio.exe</span>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    let isOpen = false;
+    const app = document.getElementById('portfolioWindow');
+
+    function updateWindowSize() {
+      if (!isOpen) return;
+      
+      if (window.innerWidth <= 768) {
+        app.style.width = '95%';
+        app.style.height = '85vh';
+        app.style.left = '50%';
+        app.style.maxWidth = '';
+        app.style.right = '';
+      } else if (window.innerWidth <= 1024) {
+        app.style.width = '70%';
+        app.style.height = '80vh';
+        app.style.left = 'calc(50% + 40px)';
+        app.style.maxWidth = 'calc(100vw - 150px)';
+        app.style.right = '20px';
+      } else {
+        app.style.width = '85%';
+        app.style.height = '90vh';
+        app.style.left = 'calc(50% + 60px)';
+        app.style.maxWidth = 'calc(100vw - 180px)';
+        app.style.right = '';
+      }
+    }
+
+    function toggleApp(e) {
+      if (e) e.preventDefault();
+      
+      if (!isOpen) {
+        app.classList.remove('opacity-0', 'w-0', 'h-0');
+        app.classList.add('opacity-100');
+        updateWindowSize();
+        isOpen = true;
+      } else {
+        app.classList.remove('opacity-100');
+        app.classList.add('opacity-0', 'w-0', 'h-0');
+        isOpen = false;
+      }
+    }
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      if (isOpen) {
+        updateWindowSize();
+      }
+    });
+
+    // Auto open the portfolio window on first load
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        toggleApp();
+      }, 1000);
+    });
+  </script>
+
+</body>
+</html>
+
