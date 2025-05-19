@@ -37,20 +37,27 @@
         left: 50% !important;
         transform: translate(-50%, -50%) !important;
         width: 95% !important;
-        height: 85vh !important;
-        max-height: 85vh;
+        height: 90vh !important;
+        max-height: 90vh;
         margin: 0;
+        overflow: hidden;
       }
       #portfolioContent {
         padding: 1rem;
-        max-height: calc(85vh - 50px);
+        height: calc(90vh - 50px);
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
       }
       .desktop-icons {
         display: none;
       }
       .mobile-nav {
         display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
       }
     }
     @media (min-width: 769px) and (max-width: 1024px) {
@@ -276,6 +283,15 @@
                 Web application for managing thesis submissions and approvals. Includes admin-side validation and real-time updates, built with React + .NET.
               </p>
               <a href="https://github.com/safetzabelii/DiplomaThesisDigii" target="_blank" class="text-[#0a246a] underline">Project Link</a>
+            </div>
+
+            <div class="bg-white p-4 rounded-none border border-gray-200 shadow-sm hover:shadow-md transition-all window-border">
+              <h3 class="text-xl font-bold text-[#0a246a] mb-2">FestivalSphere</h3>
+              <p class="mb-2 text-gray-700">
+                A full-stack platform for discovering, organizing, and managing music festivals. Features interactive event listings, artist and venue profiles, ticketing integration, and real-time updates. Built with Node.js, Next, React, MongoDB, and Socket.IO for a seamless and dynamic user experience.
+              </p>
+              <a href="https://github.com/safetzabelii/Festival" target="_blank" class="text-[#0a246a] underline">GitHub</a> |
+              <a href="https://festival-git-master-safets-projects-ac7dec58.vercel.app/" target="_blank" class="text-[#0a246a] underline">Live website</a>
             </div>
           </div>
         </section>
