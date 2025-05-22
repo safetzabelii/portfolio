@@ -141,6 +141,92 @@
       height: 100%;
       object-fit: cover;
     }
+    /* Update these styles in the style section */
+    .project-image {
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid #0a246a;
+      border-top: 1px solid #4b6fd1;
+      border-left: 1px solid #4b6fd1;
+      background: #ece9d8;
+      padding: 2px;
+    }
+    .project-image:hover {
+      transform: translateY(-2px);
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox-content {
+      position: relative;
+      background: #ece9d8;
+      border: 1px solid #0a246a;
+      border-top: 1px solid #4b6fd1;
+      border-left: 1px solid #4b6fd1;
+      padding: 2px;
+    }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      display: block;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -30px;
+      right: 0;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      background: #0a246a;
+      border: 1px solid #4b6fd1;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    .lightbox-nav {
+      position: absolute;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .lightbox-nav span {
+      background: #0a246a;
+      border: 1px solid #4b6fd1;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    .lightbox-nav span:hover {
+      background: #4b6fd1;
+    }
   </style>
 </head>
 <body class="bg-[#0a246a] min-h-screen text-white relative overflow-hidden">
@@ -269,9 +355,63 @@
           <h2 class="text-2xl font-semibold text-[#0a246a] mb-3">Featured Projects</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-white p-4 rounded-none border border-gray-200 shadow-sm hover:shadow-md transition-all window-border">
-              <h3 class="text-xl font-bold text-[#0a246a] mb-2">Food Delivery System</h3>
+              <h3 class="text-xl font-bold text-[#0a246a] mb-2">FestivalSphere</h3>
+              <div class="grid grid-cols-1 gap-4 mb-4">
+                <div class="overflow-x-auto flex gap-4 pb-4">
+                  <div class="project-image w-64 h-48">
+                    <img src="assets/FestivalSpehere/{2599E24B-9B31-4C96-BD12-A1228BF8AD9D}.png" 
+                         alt="FestivalSphere Screenshot 3" 
+                         onclick="openLightbox(this.src)" />
+                  </div>
+                  <div class="project-image w-64 h-48">
+                    <img src="assets/FestivalSpehere/{DCC9139D-A9E5-424B-8D69-677CC8AC9C72}.png" 
+                         alt="FestivalSphere Screenshot 1" 
+                         onclick="openLightbox(this.src)" />
+                  </div>
+                  <div class="project-image w-64 h-48">
+                    <img src="assets/FestivalSpehere/{EC095C67-A092-43C9-92AC-EE807AA7071A}.png" 
+                         alt="FestivalSphere Screenshot 2" 
+                         onclick="openLightbox(this.src)" />
+                  </div>
+                </div>
+              </div>
               <p class="mb-2 text-gray-700">
-                A .NET + React system with Google Maps integration for live delivery tracking, restaurant/menu management, and microservices with RabbitMQ.
+                A modern web platform for music festival discovery and management. Features include interactive event listings, artist profiles, and venue information. Built with Next.js, React, and MongoDB, implementing real-time updates and responsive design for an optimal user experience.
+              </p>
+              <a href="https://github.com/safetzabelii/Festival" target="_blank" class="text-[#0a246a] underline">GitHub</a> |
+              <a href="https://festival-git-master-safets-projects-ac7dec58.vercel.app/" target="_blank" class="text-[#0a246a] underline">Live Demo</a>
+            </div>
+
+            <div class="bg-white p-4 rounded-none border border-gray-200 shadow-sm hover:shadow-md transition-all window-border">
+              <h3 class="text-xl font-bold text-[#0a246a] mb-2">Caring For Kids</h3>
+              <div class="grid grid-cols-1 gap-4 mb-4">
+                <div class="overflow-x-auto flex gap-4 pb-4">
+                  <div class="project-image w-64 h-48">
+                    <img src="assets/caringforkids/{203811E7-B666-450A-BB6B-D616872C91AA}.png" 
+                         alt="CaringForKidsBristol Website Screenshot" 
+                         onclick="openLightbox(this.src)" />
+                  </div>
+                </div>
+              </div>
+              <p class="mb-2 text-gray-700">
+                A professional website for a children's care service in New Harbor, Maine. Features a clean, accessible design with service information, contact forms, and a newsletter subscription system. Built with modern web technologies focusing on user experience and mobile responsiveness.
+              </p>
+              <a href="https://caringforkidsbristol.com" target="_blank" class="text-[#0a246a] underline">Live Website</a>
+            </div>
+
+            <div class="bg-white p-4 rounded-none border border-gray-200 shadow-sm hover:shadow-md transition-all window-border">
+              <h3 class="text-xl font-bold text-[#0a246a] mb-2">Food Delivery System</h3>
+              <div class="grid grid-cols-1 gap-4 mb-4">
+                <div class="overflow-x-auto flex gap-4 pb-4">
+                  <div class="project-image w-64 h-48">
+                    <img src="assets/fooddelivery/food.jpg" 
+                         alt="Food Delivery System Screenshot" 
+                         onclick="openLightbox(this.src)" />
+                  </div>
+                </div>
+              </div>
+              <p class="mb-2 text-gray-700">
+                A full-stack food delivery application with real-time order tracking. Features include restaurant management, menu customization, and order processing. Built with .NET Core for the backend and React for the frontend, implementing Google Maps API for location services.
               </p>
               <a href="https://github.com/ArlindFeta53449/Lab-2-Food-Delivery" target="_blank" class="text-[#0a246a] underline">Backend</a> |
               <a href="https://github.com/safetzabelii/frontend-lab2" target="_blank" class="text-[#0a246a] underline">Frontend</a>
@@ -280,18 +420,9 @@
             <div class="bg-white p-4 rounded-none border border-gray-200 shadow-sm hover:shadow-md transition-all window-border">
               <h3 class="text-xl font-bold text-[#0a246a] mb-2">Thesis Online System</h3>
               <p class="mb-2 text-gray-700">
-                Web application for managing thesis submissions and approvals. Includes admin-side validation and real-time updates, built with React + .NET.
+                A web-based platform for managing university thesis submissions. Features include document upload, review process, and status tracking. Built with React and .NET, implementing secure file handling and role-based access control for students and administrators.
               </p>
               <a href="https://github.com/safetzabelii/DiplomaThesisDigii" target="_blank" class="text-[#0a246a] underline">Project Link</a>
-            </div>
-
-            <div class="bg-white p-4 rounded-none border border-gray-200 shadow-sm hover:shadow-md transition-all window-border">
-              <h3 class="text-xl font-bold text-[#0a246a] mb-2">FestivalSphere</h3>
-              <p class="mb-2 text-gray-700">
-                A full-stack platform for discovering, organizing, and managing music festivals. Features interactive event listings, artist and venue profiles, ticketing integration, and real-time updates. Built with Node.js, Next, React, MongoDB, and Socket.IO for a seamless and dynamic user experience.
-              </p>
-              <a href="https://github.com/safetzabelii/Festival" target="_blank" class="text-[#0a246a] underline">GitHub</a> |
-              <a href="https://festival-git-master-safets-projects-ac7dec58.vercel.app/" target="_blank" class="text-[#0a246a] underline">Live website</a>
             </div>
           </div>
         </section>
@@ -307,6 +438,18 @@
       <span class="opacity-75">Portfolio.exe</span>
     </div>
   </footer>
+
+  <!-- Update the lightbox HTML -->
+  <div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+      <span class="lightbox-close" onclick="closeLightbox()">×</span>
+      <div class="lightbox-nav">
+        <span onclick="prevImage()">❮</span>
+        <span onclick="nextImage()">❯</span>
+      </div>
+      <img id="lightbox-img" src="" alt="Lightbox image">
+    </div>
+  </div>
 
   <!-- JS -->
   <script>
@@ -364,6 +507,51 @@
       setTimeout(() => {
         toggleApp();
       }, 1000);
+    });
+
+    let currentImageIndex = 0;
+    const images = [
+      'assets/FestivalSpehere/{DCC9139D-A9E5-424B-8D69-677CC8AC9C72}.png',
+      'assets/FestivalSpehere/{EC095C67-A092-43C9-92AC-EE807AA7071A}.png',
+      'assets/FestivalSpehere/{2599E24B-9B31-4C96-BD12-A1228BF8AD9D}.png',
+      'assets/fooddelivery/food.jpg',
+      'assets/caringforkids/{203811E7-B666-450A-BB6B-D616872C91AA}.png'
+    ];
+
+    function openLightbox(src) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      currentImageIndex = images.indexOf(src);
+      lightboxImg.src = src;
+      lightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    function nextImage() {
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      document.getElementById('lightbox-img').src = images[currentImageIndex];
+    }
+
+    function prevImage() {
+      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+      document.getElementById('lightbox-img').src = images[currentImageIndex];
+    }
+
+    // Close lightbox with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowRight') {
+        nextImage();
+      } else if (e.key === 'ArrowLeft') {
+        prevImage();
+      }
     });
   </script>
 
